@@ -3,5 +3,8 @@ const router = express.Router();
 const authController = require("../controllers/authController");
 
 router.post("/signup", authController.signup);
+router.post("/signin", authController.signin);
+router.post("/signout", authController.signout);
+router.patch("/sendVerificationCode", authController.sendVerificationCode);
 
 module.exports = router;
