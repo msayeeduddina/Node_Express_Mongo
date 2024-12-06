@@ -1,0 +1,20 @@
+{
+  "name": "node_mvc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "node --watch --trace-warnings app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "date-fns": "^4.1.0",
+    "express": "^4.21.1",
+    "nodemon": "^3.1.7",
+    "uuid": "^11.0.3"
+  }
+}
