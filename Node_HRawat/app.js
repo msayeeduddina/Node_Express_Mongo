@@ -1,6 +1,9 @@
 const fs = require("fs");
 const path = require("path");
 const os = require("os");
+const EventEmitter = require("events");
+
+const eventEmitter = new EventEmitter();
 
 fs.readFile("fsContent.txt", "utf8", (err, data) => {
   if (err) {
@@ -32,3 +35,9 @@ console.log("ostype => : ", os.type());
 console.log("osuserInfo => : ", os.userInfo());
 console.log("osfreemem => : ", os.freemem());
 console.log("ostotalme => : ", os.totalmem());
+
+eventEmitter.on("myEvent", () => {
+  console.log("eventEmitter => : Event has been triggered");
+});
+
+eventEmitter.emit("myEvent");
