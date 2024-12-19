@@ -1,4 +1,5 @@
 const fs = require("fs");
+const path = require("path");
 
 fs.readFile("fsContent.txt", "utf8", (err, data) => {
   if (err) {
@@ -19,3 +20,9 @@ fs.writeFile("fsContent.txt", addData, "utf8", (err) => {
   }
   console.log("writeFile => added data : ", addData);
 });
+
+const fullPath = path.join("/docs", "Cont1");
+console.log("fullPath", fullPath);
+
+const parsedPath = path.parse("/docs/Cont1");
+console.log("parsedPath", parsedPath);
