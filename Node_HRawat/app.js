@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const os = require("os");
 
 fs.readFile("fsContent.txt", "utf8", (err, data) => {
   if (err) {
@@ -26,3 +27,8 @@ console.log("fullPath", fullPath);
 
 const parsedPath = path.parse("/docs/Cont1");
 console.log("parsedPath", parsedPath);
+
+console.log("ostype => : ", os.type());
+console.log("osuserInfo => : ", os.userInfo());
+console.log("osfreemem => : ", os.freemem());
+console.log("ostotalme => : ", os.totalmem());
