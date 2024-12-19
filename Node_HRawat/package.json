@@ -1,0 +1,13 @@
+{
+  "name": "node_hrawat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "node --watch --trace-warnings app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
