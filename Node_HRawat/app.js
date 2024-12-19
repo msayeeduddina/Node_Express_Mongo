@@ -1,5 +1,5 @@
 const express = require("express");
-const logMiddleware = require(".//logMiddleware");
+const logMiddleware = require("./Middleware/logMiddleware");
 
 const app = express();
 app.use(logMiddleware);
