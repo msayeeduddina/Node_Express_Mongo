@@ -20,4 +20,29 @@ const logMiddleware3 = (req, res, next) => {
   next();
 };
 
-module.exports = { logMiddleware1, logMiddleware2, logMiddleware3 };
+const authentication = (req, res, next) => {
+  if ((req.headers, authentication === "Bearer my token")) {
+    next();
+  } else {
+    res.status(401).send("Unauthorized");
+  }
+};
+
+const route3 = (req, res, next) => {
+  console.log("This is log middleware3");
+  next();
+};
+
+const route4 = (req, res, next) => {
+  console.log("This is log middleware4");
+  next();
+};
+
+module.exports = {
+  logMiddleware1,
+  logMiddleware2,
+  logMiddleware3,
+  authentication,
+  route3,
+  route4,
+};
