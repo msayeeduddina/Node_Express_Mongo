@@ -9,6 +9,8 @@ const {
   logMiddleware3,
 } = require("./Middleware/logMiddleware");
 const router = require("./Routes/route");
+const userRouter = require("./Routes/userRoute");
+const productRouter = require("./Routes/productRoute");
 
 const app = express();
 
@@ -38,6 +40,8 @@ app.post("/login", (req, res) => {
 });
 
 app.use("/api", router); // routing for modularity
+app.use("/user", userRouter);
+app.use("/product", productRouter);
 
 const port = 3000;
 

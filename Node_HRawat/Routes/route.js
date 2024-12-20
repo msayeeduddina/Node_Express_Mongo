@@ -1,11 +1,11 @@
 const express = require("express");
+const router = express.Router();
 const {
   authentication,
   route3,
   route4,
 } = require("../Middleware/logMiddleware");
 
-const router = express.Router();
 
 router.get("/route2", (req, res) => {
   console.log("this is route2");
