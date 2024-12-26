@@ -1,43 +1,51 @@
-require("dotenv").config();
-const express = require("express");
-const mongoose = require("mongoose");
-const Product = require("./model/product/product.model");
-const app = express();
+// ==========================
+// Environment Setup
+// ==========================
+require("dotenv").config(); // Load environment variables from .env file
 
-const PORT = process.env.PORT;
-const Project2DBNodeSimpleCRUDFCC = process.env.MONGOOSE_CONNECT_URI;
+// ==========================
+// Module Imports
+// ==========================
+const express = require("express"); // Import Express framework
+const mongoose = require("mongoose"); // Import Mongoose for MongoDB interaction
+const productRoute = require("./routes/products/products.route"); // Import product routes
 
+// ==========================
+// Configuration
+// ==========================
+const PORT = process.env.PORT || 3000; // Set the port for the server, defaulting to 3000 if not specified
+const MONGOOSE_CONNECT_URI = process.env.MONGOOSE_CONNECT_URI; // MongoDB connection URI, defaulting to a local database if not specified
+
+// ==========================
+// Express Application Initialization
+// ==========================
+const app = express(); // Initialize the Express application
+
+// ==========================
+// Middleware Setup
+// ==========================
+app.use(express.json()); // Middleware to parse JSON request bodies
+
+// ==========================
+// Route Definitions
+// ==========================
+app.use("/api/products", productRoute); // Define routes for product-related API endpoints
+
+// ==========================
+// Database Connection
+// ==========================
 mongoose
-  .connect(Project2DBNodeSimpleCRUDFCC)
+  .connect(MONGOOSE_CONNECT_URI) // Connect to MongoDB
   .then(() => {
-    console.log("Project2DBNodeSimpleCRUDFCC DB Connected");
+    console.log("Database connected successfully."); // Log successful connection
   })
   .catch((error) => {
-    console.log("Project2DBNodeSimpleCRUDFCC DB err", error);
+    console.error("Database connection error:", error); // Log connection errors
   });
 
-app.use(express.json());
-
-app.get("/api/products", async (req, res) => {
-  try {
-    const product = await Product.find({});
-    console.log(product);
-    res.status(200).json(product);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
-
-app.post("/api/products", async (req, res) => {
-  try {
-    const product = await Product.create(req.body);
-    console.log(product);
-    res.status(200).json(product);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
-
+// ==========================
+// Server Initialization
+// ==========================
 app.listen(PORT, () => {
-  console.log("Listening on Port: ", PORT);
+  console.log(`Server is listening on port: ${PORT}`); // Log server start
 });
